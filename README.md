@@ -20,6 +20,8 @@ Archives a PR interview repo.
 - Requires ENV vars to interact with the Clipboard-recruiting Github org (ask @kevcx2 for existing, or create your own personal access token)
 - Can run locally (instructions below) or as a docker image
 - Deployed to heroku, but can deploy anywhere as a docker image
+- Why don't I use repo templates, and why do I use the github CLI to push branches from the template repo to the interview repo?
+    - Good question. I wanted to do this originally, but very importantly `Branches created from a template have unrelated histories, which means you cannot create pull requests or merge between the branches.`. This means we cannot create a new repo from a template and then create a pull request between the template branches. (https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
 
 ## Description
 
