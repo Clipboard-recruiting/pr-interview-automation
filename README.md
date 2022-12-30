@@ -1,6 +1,7 @@
+## Summary
 Automates creating and archiving a PR interview repository
 
-### Endpoints
+## Endpoints
 `GET /pr-interviews`  
 List 30 most recent PR interview repos.
 
@@ -14,7 +15,7 @@ Archives a PR interview repo.
 `GET /health-check/public`  
 `GET /health-check/private`
 
-### Notes
+## Notes
 - Requires a local installation of the github cli
 - Requires ENV vars to interact with the Clipboard-recruiting Github org (ask @kevcx2 for existing, or create your own personal access token)
 - Can run locally (instructions below) or as a docker image
