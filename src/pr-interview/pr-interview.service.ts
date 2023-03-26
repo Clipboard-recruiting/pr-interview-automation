@@ -54,7 +54,8 @@ export class PrInterviewService {
     const repos = await this.githubApiService.repos.listPrInterviewRepos();
     const nextRepoId = getNextIncrementingRepoId(repos);
     const candidateRepoName = `${CANDITATE_PR_REVIEW_REPO_PREFIX}-${nextRepoId}`;
-    const candidateRepo = await await this.githubApiService.repos.create(
+
+    const candidateRepo = await this.githubApiService.repos.create(
       candidateRepoName,
     );
 

@@ -11,6 +11,21 @@ import {
   TEMPLATE_PR_BRANCH,
 } from '../constants';
 
+// We can't use the GH API to create a new repo with a pull request from a template.
+// (See the readme for more details). Instead, we use this module to setup the PR review.
+// It uses git CLI to setup the PR in a repository.
+//
+// HACK(Kev Cox): This module has an underlying assumption that the webserver it runs
+// on has git installed locally. The Dockerfile handles this.
+//
+// How this works:
+// Creates a temporary directory
+// Clones a template GitHub repository
+// Pushes the template's main & PR branch to a provided repo
+// Destroys the temp directory
+//
+// Once this is done, the repo has code and branches set up correctly and we can
+// go back to using the GH API finish creating our pull request.
 @Injectable()
 export class GithubCliService {
   async createTempDirectory() {
@@ -67,7 +82,7 @@ export class GithubCliService {
       command: `clone ${GIT_CLONE_URL}`,
       at: TEMP_DIR,
     });
-    // from template directory, git switch main
+    // from cloned template directory, git switch main
     await this.git({
       command: `switch ${TEMPLATE_MAIN_BRANCH}`,
       at: `${TEMP_DIR}/${PR_REVIEW_TEMPLATE_REPO}`,
