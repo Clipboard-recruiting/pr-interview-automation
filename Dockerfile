@@ -8,6 +8,7 @@ RUN adduser -D recruiter
 USER recruiter
 
 # Create app directory
+RUN mkdir /home/recruiter/app
 WORKDIR /home/recruiter/app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
