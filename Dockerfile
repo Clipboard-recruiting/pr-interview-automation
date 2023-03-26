@@ -4,10 +4,12 @@ FROM --platform=linux/amd64 node:18-alpine
 RUN apk update
 RUN apk add git
 
+# Note: Heroku never allows root access on dynos, so to emulate the heroku build env
+# You have to create a user as a first step in the build process.
 RUN adduser -D recruiter
 USER recruiter
 
-# Create app directory
+# Create app directory.
 RUN mkdir /home/recruiter/app
 WORKDIR /home/recruiter/app
 
