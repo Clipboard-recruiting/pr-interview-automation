@@ -111,6 +111,7 @@ export class GithubApiService {
         title: 'Add worker rate and block',
         head: TEMPLATE_PR_BRANCH,
         base: TEMPLATE_MAIN_BRANCH,
+        body: `1) adds a "rating" column to the "ShiftAssignment" table, allowing workers to be rated by the facility they work at. 2) adds a new "BlockedWorker" table to keep track of workers who have been blocked from working at a particular facility. 3) Updates controllers / services to support new rating & block features.`
       });
       return response.data;
     },
